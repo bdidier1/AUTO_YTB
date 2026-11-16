@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AUTO YTB</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/js/core.js" defer></script>
+  <script src="/static/js/stats.js" defer></script>
+  <script src="/static/js/publish.js" defer></script>
+  <script src="/static/js/videos.js" defer></script>
+  <script src="/static/js/calendar.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">▶</span> AUTO YTB</div>
+    <nav class="tabs" id="tabs">
+      <a href="#publier" data-tab="publier">Publier</a>
+      <a href="#videos" data-tab="videos">Vidéos en ligne</a>
+    </nav>
+    <div class="account-switch" id="accountSwitch">
+      <button type="button" class="account-btn" id="accountBtn" aria-haspopup="menu" aria-expanded="false">
+        <img id="accountAvatar" alt="" class="avatar sm hidden">
+        <span id="accountName">Aucun compte</span>
+        <span class="caret">▾</span>
+      </button>
+      <div class="account-menu hidden" id="accountMenu" role="menu"></div>
+    </div>
+  </header>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <div id="reauthBanner" class="reauth hidden" role="alert"></div>
+
+  <main>
+    <!-- PUBLIER -->
+    <section id="view-publier" class="view">
+      <form id="addForm" class="add-bar">
+        <input id="urlInput" type="url" required placeholder="Colle un lien TikTok, Instagram, X/Twitter, YouTube, Facebook..." autocomplete="off">
+        <button type="submit" class="btn primary">Télécharger</button>
+      </form>
+      <p class="hint" id="encoderHint"></p>
+      <div id="pubCalendar" class="card pub-cal"></div>
+      <div id="jobs" class="jobs"></div>
+      <p id="jobsEmpty" class="empty">Aucune vidéo en préparation. Colle un lien ci-dessus.</p>
+    </section>
+
+    <!-- VIDEOS EN LIGNE -->
+    <section id="view-videos" class="view hidden">
+      <div class="row between">
+        <h2 id="videosTitle">Vidéos en ligne</h2>
+        <div class="row">
+          <div class="seg" id="videoFilter">
+            <button type="button" data-f="all" class="on">Toutes</button>
+            <button type="button" data-f="scheduled">Programmées</button>
+            <button type="button" data-f="public">Publiées</button>
+            <button type="button" data-f="other">Privées / non répertoriées</button>
+          </div>
+          <button type="button" class="btn" id="videosRefresh" title="Actualiser">↻</button>
+        </div>
+      </div>
+      <div id="videosBody"></div>
+    </section>
+
+    <!-- DETAIL D'UNE VIDEO -->
+    <section id="view-video" class="view hidden">
+      <div id="videoBody"></div>
+    </section>
+
+    <!-- STATS -->
+    <section id="view-stats" class="view hidden">
+      <div class="row between">
+        <h2 id="statsTitle">Statistiques</h2>
+        <div class="seg" id="periodSeg">
+          <button type="button" data-days="7">7 j</button>
+          <button type="button" data-days="28" class="on">28 j</button>
+          <button type="button" data-days="90">90 j</button>
+          <button type="button" data-days="365">1 an</button>
+        </div>
+      </div>
+      <div id="statsBody"></div>
+    </section>
+
+    <!-- PROFIL -->
+    <section id="view-profil" class="view hidden">
+      <div id="profileBody"></div>
+    </section>
+
+    <!-- COMPTES -->
+    <section id="view-comptes" class="view hidden">
+      <h2>Comptes YouTube</h2>
+      <div id="setupBox"></div>
+      <div id="accountsList" class="accounts"></div>
+      <button type="button" class="btn primary" id="connectBtn">+ Connecter un compte YouTube</button>
+      <div id="cookiesBox" class="card mt"></div>
+    </section>
+  </main>
+</body>
+</html>

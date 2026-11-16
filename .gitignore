@@ -1,0 +1,7 @@
+# Accès et données personnelles : ne jamais versionner
+data/*
+!data/.gitkeep
+.venv/
+.dist/
+__pycache__/
+*.pyc
